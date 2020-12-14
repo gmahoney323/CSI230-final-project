@@ -42,9 +42,11 @@ int main(int argc, char* argv[])
         }
     }
 
+    //if all the conditions are correct
     if(csvFlag && sortFlag && outFlag)
     {
         cout << "flags set!" << endl;
+        //check if there was proper input for the sort method
         if(sortValue.compare("name")==0 || sortValue.compare("quantity")==0 || sortValue.compare("price")==0)
         {
             cout << "sort conditions set\n";
@@ -55,6 +57,7 @@ int main(int argc, char* argv[])
             cout << "sort arguments are not set" << endl;
         }
         
+        //if no input was given for the input or output files
         if (outValue.empty() || csvValue.empty())
         {
             cout << sortValue.compare("quantity") << endl;
@@ -72,6 +75,7 @@ int main(int argc, char* argv[])
 
                 ifstream inFile;
                 inFile.open(csvValue);
+                //check if file can be opened
                 if(inFile)
                 {
                     int recordCount = csvhelper(inFile, csvValue + ".csv");

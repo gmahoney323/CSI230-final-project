@@ -6,9 +6,11 @@
 #include <iostream>
 #include <sstream>
 
+//vector that stores all of the information from the CSV file
+//tuple holds strings (name of the item), ints (quantity), and float(price)
 std::vector<std::tuple<std::string, int, float>> tupes;
 
-//main 
+//parses CSV files and puts them in the tupes vector
 int csvhelper(std::ifstream& inFile, std::string csvFileName)
 {
     using boost::lexical_cast;
@@ -24,6 +26,7 @@ int csvhelper(std::ifstream& inFile, std::string csvFileName)
         std::ifstream flog;
         flog.open(csvFileName, std::ios_base::out);
 
+        //removes first line of CSV from processing
         getline(inFile, strLine);
 
         while(getline(inFile, strLine))
@@ -56,16 +59,19 @@ int csvhelper(std::ifstream& inFile, std::string csvFileName)
 //used help with sorting vectors of tuple from:
 //https://www.geeksforgeeks.org/sorting-vector-tuple-c-ascending-order/
 
+//quantity sort helper function
 bool sortByQuantity(const std::tuple<std::string, int, float>& lhs, const std::tuple<std::string, int, float>& rhs)
 {
     return std::get<1>(lhs) < std::get<1>(rhs);
 }
 
+//price sort helper function
 bool sortByPrice(const std::tuple<std::string, int, float>& lhs, const std::tuple<std::string, int, float>& rhs)
 {
     return std::get<2>(lhs) < std::get<2>(rhs);
 }
 
+//master sorting function
 void sortCSV(std::ofstream& outFile, std::string outFileName, std::string sortMethod)
 {
     if(sortMethod=="quantity")
@@ -81,8 +87,11 @@ void sortCSV(std::ofstream& outFile, std::string outFileName, std::string sortMe
         std::sort(tupes.begin(), tupes.end());
     }
 
+    //reverse the output, as std::sort() sorts in ascending order by default.
+    //descending order is much more helpful in this scenario
     std::reverse(tupes.begin(), tupes.end());
 
+    //outputs each tuple on its own line in the output file
     for(int i = 0; i < tupes.size(); i++)
     {
         outFile << std::get<0>(tupes[i]) << " " << std::get<1>(tupes[i]) << " " << std::get<2>(tupes[i]) << "\n";
