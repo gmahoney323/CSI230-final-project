@@ -1,6 +1,5 @@
 //csvhelper.cpp
-//author: Devin Paden
-//edited by: Grant Mahoney
+//author: Grant Mahoney
 //date: 12/12/2020
 
 #include "csvhelper.h"
@@ -9,6 +8,7 @@
 
 std::vector<std::tuple<std::string, int, float>> tupes;
 
+//main 
 int csvhelper(std::ifstream& inFile, std::string csvFileName)
 {
     using boost::lexical_cast;
@@ -32,12 +32,15 @@ int csvhelper(std::ifstream& inFile, std::string csvFileName)
             std::getline(s_stream, strName, ',');
             std::getline(s_stream, strQuantity, ',');
             std::getline(s_stream, strPrice, ',');
+            //made prices into integers, as the game uses gold currency
+            //in the game, there is no such thing as half a gold piece
             strPrice = strPrice.substr(0, strPrice.find("."));
 
             int quant = boost::lexical_cast<int>(strQuantity);
             int price = std::stoi(strPrice, nullptr, 10);
 
             tupes.push_back(std::tuple<std::string, int, float>(strName, quant, price));
+            //debug cout
             //std::cout << "Name: " << std::get<0>(tupes[recordCount]) << "\n" << "Quantity: " << std::get<1>(tupes[recordCount]) << "\n" << "Price: " << std::get<2>(tupes[recordCount]) << "\n\n";
             recordCount++;
         }

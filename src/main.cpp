@@ -5,13 +5,17 @@ using namespace std;
 
 int main(int argc, char* argv[])
 {
+    //args
     int opt{};
     bool csvFlag{false};
     bool sortFlag{false};
     bool outFlag{false};
 
+    //csv filename
     string csvValue;
+    //sort type
     string sortValue;
+    //output filename
     string outValue;
     bool optErr=true;
 
@@ -59,15 +63,12 @@ int main(int argc, char* argv[])
         }
         else
         {
+            //fout will be used to write to output file
             ofstream fout;
             fout.open(outValue, ios_base::ate);
             if(fout)
             {
-                //std::string programName = basename(argv[0]);
-                //std::string msg = "The csv file is: " + csvValue + " and logfile is:" + logValue + "\n";
-                //log(msg, programName, flog);
                 optErr = false;
-                
 
                 ifstream inFile;
                 inFile.open(csvValue);
