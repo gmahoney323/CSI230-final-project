@@ -26,10 +26,6 @@ int csvhelper(std::ifstream& inFile, std::string csvFileName)
 
     if(inFile)
     {
-
-        std::ifstream flog;
-        flog.open(csvFileName, std::ios_base::out);
-
         //removes first line of CSV from processing
         getline(inFile, strLine);
 
@@ -51,7 +47,6 @@ int csvhelper(std::ifstream& inFile, std::string csvFileName)
             //std::cout << "Name: " << std::get<0>(tupes[recordCount]) << "\n" << "Quantity: " << std::get<1>(tupes[recordCount]) << "\n" << "Price: " << std::get<2>(tupes[recordCount]) << "\n\n";
             recordCount++;
         }
-        flog.close();
     }
     return recordCount;
 }
