@@ -1,6 +1,10 @@
 //csvhelper.cpp
 //author: Grant Mahoney
 //date: 12/12/2020
+//with help from: geeks4geeks.com
+//https://www.geeksforgeeks.org/sorting-vector-tuple-c-ascending-order/
+//desc: parses the CSV file as well as handling sorting
+
 
 #include "csvhelper.h"
 #include <iostream>

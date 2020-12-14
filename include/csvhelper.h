@@ -1,21 +1,16 @@
 //csvhelper.h
-//author: Devin Paden
-//edited by: Grant Mahoney
-//date: 11/11/2020
+//author: Grant Mahoney
+//date: 12/12/2020
+//desc: contributes the includes necessary for the program as well as function definitions
 
 #ifndef CSVHELPER_H
 #define CSVHELPER_H
 
 #include <string>
 #include <fstream>
-#include <pwd.h>
-#include <unistd.h>
-#include <libgen.h>
 #include <vector>
 #include <boost/lexical_cast.hpp>
 #include <tuple>
-
-
 
 //processes the given CSV file into their respective values
 int csvhelper(std::ifstream& inFile, std::string csvFileName);

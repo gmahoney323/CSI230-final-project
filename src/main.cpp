@@ -1,3 +1,8 @@
+//main.cpp
+//author: Grant Mahoney
+//date: 12/12/2020
+//desc: main driver file, handles arguments
+
 #include <iostream>
 #include "csvhelper.h"
 
